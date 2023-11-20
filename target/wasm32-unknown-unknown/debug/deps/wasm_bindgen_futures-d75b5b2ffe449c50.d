@@ -1,0 +1,9 @@
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\wasm32-unknown-unknown\debug\deps\libwasm_bindgen_futures-d75b5b2ffe449c50.rmeta: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\queue.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\task\singlethread.rs
+
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\wasm32-unknown-unknown\debug\deps\libwasm_bindgen_futures-d75b5b2ffe449c50.rlib: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\queue.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\task\singlethread.rs
+
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\wasm32-unknown-unknown\debug\deps\wasm_bindgen_futures-d75b5b2ffe449c50.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\queue.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\task\singlethread.rs
+
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\lib.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\queue.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.38\src\task\singlethread.rs:

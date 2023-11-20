@@ -1,0 +1,10 @@
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\libgloo_storage-578f9f89a3d9b02e.rmeta: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\local_storage.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\session_storage.rs
+
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\libgloo_storage-578f9f89a3d9b02e.rlib: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\local_storage.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\session_storage.rs
+
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\gloo_storage-578f9f89a3d9b02e.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\local_storage.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\session_storage.rs
+
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\lib.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\errors.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\local_storage.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-storage-0.3.0\src\session_storage.rs:

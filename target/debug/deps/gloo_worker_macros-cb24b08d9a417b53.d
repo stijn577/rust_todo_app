@@ -1,0 +1,8 @@
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\gloo_worker_macros-cb24b08d9a417b53.dll: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\oneshot.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\reactor.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\worker_fn.rs
+
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\gloo_worker_macros-cb24b08d9a417b53.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\oneshot.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\reactor.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\worker_fn.rs
+
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\lib.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\oneshot.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\reactor.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-worker-macros-0.1.0\src\worker_fn.rs:

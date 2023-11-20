@@ -1,0 +1,10 @@
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\libgloo_utils-de131b8f5d803cab.rmeta: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\iter.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\format\json.rs
+
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\libgloo_utils-de131b8f5d803cab.rlib: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\iter.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\format\json.rs
+
+c:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\yew_rocket\target\debug\deps\gloo_utils-de131b8f5d803cab.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\errors.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\iter.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\format\json.rs
+
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\lib.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\errors.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\iter.rs:
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-utils-0.2.0\src\format\json.rs:

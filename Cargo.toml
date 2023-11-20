@@ -1,0 +1,14 @@
+[package]
+name = "yew_rocket"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.192", features = ["derive"] }
+rand = "0.8.4"
+
+[workspace]
+members = ["app", "server"]
+default-members = ["server"]

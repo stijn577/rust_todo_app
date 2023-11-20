@@ -1,0 +1,7 @@
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\libboolinator-41036b49153f2c30.rmeta: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\boolinator-2.4.0\src\lib.rs
+
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\libboolinator-41036b49153f2c30.rlib: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\boolinator-2.4.0\src\lib.rs
+
+C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\boolinator-41036b49153f2c30.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\boolinator-2.4.0\src\lib.rs
+
+C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\boolinator-2.4.0\src\lib.rs:
