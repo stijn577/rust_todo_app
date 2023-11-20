@@ -1,9 +1,0 @@
-C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\libgloo_file-033e474d8ad76098.rmeta: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\blob.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_list.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_reader.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\object_url.rs
-
-C:\Users\Stijn_Admin\Documents\R_and_D\Software\Rust\web\axum_yew\target\debug\deps\gloo_file-033e474d8ad76098.d: C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\lib.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\blob.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_list.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_reader.rs C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\object_url.rs
-
-C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\lib.rs:
-C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\blob.rs:
-C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_list.rs:
-C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\file_reader.rs:
-C:\Users\Stijn_Admin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\gloo-file-0.3.0\src\object_url.rs:
