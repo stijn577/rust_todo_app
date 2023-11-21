@@ -2,5 +2,10 @@
 target = "index.html"
 dist = "../dist"
 
-[[proxy]]
-backend = "http://[::1]:8080/api/"
+# [[proxy]]
+# backend = "http://[::1]:8080/api/"
+
+[[hooks]]
+stage = "pre_build"
+command = "nu"
+command_arguments = ["-c", "tailwindcss -o ./tailwind.css"]
