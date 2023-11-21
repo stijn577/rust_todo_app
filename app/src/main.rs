@@ -40,23 +40,20 @@ mod counter {
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
                 <div>
-                    <div class="panel">
                         // A button to send the Increment message
-                        <button class="button" onclick={ctx.link().callback(|_| CounterMsg::Increment)}>
+                        <button class="btn btn-green" onclick={ctx.link().callback(|_| CounterMsg::Increment)}>
                             { "+1" }
                         </button>
 
                         // A button to send the Decrement message
-                        <button onclick={ctx.link().callback(|_| CounterMsg::Decrement)}>
+                        <button class="btn btn-red" onclick={ctx.link().callback(|_| CounterMsg::Decrement)}>
                             { "-1" }
                         </button>
 
                         // A button to send two Increment messages
-                        <button onclick={ctx.link().batch_callback(|_| vec![CounterMsg::Increment, CounterMsg::Increment])}>
+                        <button class="btn btn-blue" onclick={ctx.link().batch_callback(|_| vec![CounterMsg::Increment, CounterMsg::Increment])}>
                             { "+2" }
                         </button>
-
-                    </div>
 
                     // Display the current value of the counter
                     <p class="counter">
@@ -79,7 +76,7 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-100">{"If you see this string, means we have multiple components displaying at the same time."}</p>
+            <p class="bg-red-100">{"This string means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }

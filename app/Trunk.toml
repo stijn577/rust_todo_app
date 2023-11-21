@@ -8,4 +8,4 @@ dist = "../dist"
 [[hooks]]
 stage = "pre_build"
 command = "nu"
-command_arguments = ["-c", "tailwindcss -o ./tailwind.css"]
+command_arguments = ["-c", "tailwindcss -i ./css/input.css -o ./css/output.css"]
