@@ -37,7 +37,9 @@ name = "app"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "gloo 0.10.0",
  "gloo-net 0.4.0",
+ "js-sys",
  "log",
  "serde",
  "serde_json",
