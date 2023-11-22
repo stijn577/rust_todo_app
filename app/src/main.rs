@@ -39,7 +39,7 @@ mod counter {
 
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
-                <div>
+                <div class="pl-5">
                         // A button to send the Increment message
                         <button class="btn btn-green" onclick={ctx.link().callback(|_| CounterMsg::Increment)}>
                             { "+1" }
@@ -76,7 +76,7 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-100">{"This string means there is multiple components and there is tailwindcss support."}</p>
+            <p class="bg-red-100 pl-5">{"This string means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }
