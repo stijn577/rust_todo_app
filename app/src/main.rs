@@ -1,6 +1,7 @@
 use gloo::console;
 use js_sys::Date;
 use yew::{function_component, html, Component, Context, Html};
+use yew_rocket::utils::structs::Person;
 
 mod counter {
     use super::*;
@@ -80,6 +81,69 @@ mod rawhtml {
         }
     }
 }
+mod http_req_test {
+    use super::*;
+
+    pub(super) enum HttpMsg {
+        Fetch(&'static str),
+        Person(Person),
+    }
+
+    pub(super) struct HttpReq {
+        data: Option<Person>, // this will store the person result
+    }
+
+    impl Component for HttpReq {
+        type Message = HttpMsg;
+        type Properties = ();
+
+        fn create(ctx: &Context<Self>) -> Self {
+            Self { data: None }
+        }
+
+        fn view(&self, ctx: &Context<Self>) -> Html {
+            html! {
+            <div>
+                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/stijn/19")})}>{ "get stijn" }</button>
+                <p>{ if let Some(data) = &self.data {format!("{:?}", data) } else { "".to_string() }}</p>
+            </div>
+            }
+        }
+
+        fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+            let link = ctx
+                .link()
+                .clone();
+
+            match msg {
+                HttpMsg::Fetch(url) => {
+                    wasm_bindgen_futures::spawn_local(async move {
+                        let resp = reqwest::get(url)
+                            .await
+                            .unwrap();
+
+                        console::log!("response received");
+
+                        let person = resp
+                            .json::<Person>()
+                            .await
+                            .unwrap();
+
+                        console::log!("json parsed");
+
+                        link.send_message(HttpMsg::Person(person))
+                    });
+
+                    false
+                }
+                HttpMsg::Person(person) => {
+                    self.data = Some(person);
+                    true
+                }
+            }
+        }
+    }
+}
 
 #[function_component]
 fn App() -> Html {
@@ -87,6 +151,7 @@ fn App() -> Html {
         <div>
             <counter::Counter/>
             <rawhtml::RawHtml/>
+            <http_req_test::HttpReq/>
         </div>
     }
 }

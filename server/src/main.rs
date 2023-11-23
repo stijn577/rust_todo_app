@@ -1,16 +1,24 @@
-use rocket::response::content::RawJson;
+#[cfg(not(test))]
+static WASM_DIR: &str = "dist";
+#[cfg(test)]
+static WASM_DIR: &str = "../dist";
+
+use rocket::{response::content::RawJson, Build, Rocket};
 use yew_rocket::utils::structs::Person;
 
 #[macro_use]
 extern crate rocket;
 
+#[cfg(test)]
+mod tests;
+
 //TODO: add database support to the project
 #[launch]
-fn rocket() -> _ {
+fn rocket() -> Rocket<Build> {
     rocket::build()
         // This binds the yew wasm frontend files, without this the index.html links to .js and .wasm files
         // would not be able to be established.
-        .mount("/", rocket::fs::FileServer::from("dist"))
+        .mount("/", rocket::fs::FileServer::from(WASM_DIR))
         .mount("/hello", routes![hello_world, struct_json])
 }
 
