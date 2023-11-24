@@ -1,0 +1,11 @@
+[build]
+target = "app/index.html"
+dist = "dist"
+
+# [[proxy]]
+# backend = "http://[::1]:8080/api/"
+
+[[hooks]]
+stage = "pre_build"
+command = "nu"
+command_arguments = ["-c", "tailwindcss -i ./app/css/input.css -o ./app/css/output.css"]

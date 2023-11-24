@@ -5,9 +5,7 @@
 ## Hosting locally
 To host the website locally, you will have to perform the following actions:
 ```sh
-cd app \ 
-trunk build \ 
-cd .. \ 
+trunk build
 cargo r 
 ```
 or when using nushell source the build.nu file using:

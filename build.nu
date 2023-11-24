@@ -1,6 +1,9 @@
 def launch [] {
-    cd app
     trunk build
-    cd ..
     cargo r
+}
+
+def "clean all" [] {
+    trunk clean
+    cargo clean
 }

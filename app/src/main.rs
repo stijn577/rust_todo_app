@@ -40,7 +40,7 @@ mod counter {
 
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
-                <div class="pl-5">
+                <div>
                         // A button to send the Increment message
                         <button class="btn btn-green" onclick={ctx.link().callback(|_| CounterMsg::Increment)}>
                             { "+1" }
@@ -77,7 +77,7 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-100 pl-5">{"This string means there is multiple components and there is tailwindcss support."}</p>
+            <p class="bg-red-255">{"This string means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }
@@ -85,12 +85,14 @@ mod http_req_test {
     use super::*;
 
     pub(super) enum HttpMsg {
-        Fetch(&'static str),
+        Fetch(String),
         Person(Person),
     }
 
     pub(super) struct HttpReq {
-        data: Option<Person>, // this will store the person result
+        // name: String,           // this will store the name of the person
+        // age: usize,             // this will store the age of the person
+        person: Option<Person>, // this will store the person result
     }
 
     impl Component for HttpReq {
@@ -98,14 +100,14 @@ mod http_req_test {
         type Properties = ();
 
         fn create(ctx: &Context<Self>) -> Self {
-            Self { data: None }
+            Self { person: None }
         }
 
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
             <div>
-                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/stijn/19")})}>{ "get stijn" }</button>
-                <p>{ if let Some(data) = &self.data {format!("{:?}", data) } else { "".to_string() }}</p>
+                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/stijn/19".to_string())})}>{ "get stijn" }</button>
+                <p>{ if let Some(data) = &self.person {format!("{:?}", data) } else { "".to_string() }}</p>
             </div>
             }
         }
@@ -118,14 +120,15 @@ mod http_req_test {
             match msg {
                 HttpMsg::Fetch(url) => {
                     wasm_bindgen_futures::spawn_local(async move {
-                        let person = get_person(url).await;
+                        let person = get_person(url.as_str()).await;
                         link.send_message(HttpMsg::Person(person))
                     });
 
                     false
                 }
                 HttpMsg::Person(person) => {
-                    self.data = Some(person);
+                    self.person = Some(person.clone());
+                    console::log!("person has been set to: ", person);
                     true
                 }
             }
@@ -152,11 +155,13 @@ mod http_req_test {
 #[function_component]
 fn App() -> Html {
     html! {
-        <div>
+    
+        <div  class="pl-5">
             <counter::Counter/>
             <rawhtml::RawHtml/>
             <http_req_test::HttpReq/>
         </div>
+    
     }
 }
 fn main() {

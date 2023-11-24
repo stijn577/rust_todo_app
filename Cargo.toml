@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 serde = { version = "1.0.192", features = ["derive"] }
 rand = "0.8.4"
+js-sys = "0.3.65"
 
 [workspace]
 members = ["app", "server"]
