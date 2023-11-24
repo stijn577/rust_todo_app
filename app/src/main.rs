@@ -118,19 +118,7 @@ mod http_req_test {
             match msg {
                 HttpMsg::Fetch(url) => {
                     wasm_bindgen_futures::spawn_local(async move {
-                        let resp = reqwest::get(url)
-                            .await
-                            .unwrap();
-
-                        console::log!("response received");
-
-                        let person = resp
-                            .json::<Person>()
-                            .await
-                            .unwrap();
-
-                        console::log!("json parsed");
-
+                        let person = get_person(url).await;
                         link.send_message(HttpMsg::Person(person))
                     });
 
@@ -142,6 +130,22 @@ mod http_req_test {
                 }
             }
         }
+    }
+
+    async fn get_person(url: &str) -> Person {
+        let resp = reqwest::get(url)
+            .await
+            .unwrap();
+
+        console::log!("response received");
+
+        let person = resp
+            .json::<Person>()
+            .await
+            .unwrap();
+
+        console::log!("json parsed");
+        person
     }
 }
 
