@@ -1,11 +1,28 @@
 [build]
 target = "app/index.html"
 dist = "dist"
-
+release = false
+open = true
 # [[proxy]]
 # backend = "http://[::1]:8080/api/"
+
+[watch]
+watch = []
+ignore = []
+
+[clean]
+dist = "dist"
+cargo = false
 
 [[hooks]]
 stage = "pre_build"
 command = "nu"
-command_arguments = ["-c", "tailwindcss -i ./app/css/input.css -o ./app/css/output.css"]
+command_arguments = [
+    "-c",
+    "tailwindcss -i ./app/css/input.css -o ./app/css/output.css",
+]
+
+# [[hooks]]
+# stage = "post_build"
+# command = "cargo"
+# command_arguments = ["run"]

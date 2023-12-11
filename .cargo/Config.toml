@@ -1,0 +1,6 @@
+[alias]
+launch = "watch -c -- trunk build && cargo r"
+
+
+[term]
+color = "always"

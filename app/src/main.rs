@@ -77,7 +77,7 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-255">{"This string means there is multiple components and there is tailwindcss support."}</p>
+            <p class="bg-red-100">{"This string means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }
@@ -106,7 +106,7 @@ mod http_req_test {
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
             <div>
-                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/stijn/19".to_string())})}>{ "get stijn" }</button>
+                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/test/10".to_string())})}>{ "get stijn" }</button>
                 <p>{ if let Some(data) = &self.person {format!("{:?}", data) } else { "".to_string() }}</p>
             </div>
             }
