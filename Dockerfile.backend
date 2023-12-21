@@ -1,0 +1,16 @@
+FROM rust:latest AS backend-builder
+
+WORKDIR /usr/src/server
+
+COPY ./server /usr/src/server
+COPY ./share /usr/src/share
+
+RUN cargo b
+
+ENV ROCKET_ADDRESS=0.0.0.0
+
+EXPOSE 8000
+
+# COPY --from=backend-builder /usr/src/server/target/debug/server /usr/bin/server
+
+CMD ["/usr/src/server/target/debug/server"]

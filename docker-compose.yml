@@ -3,15 +3,15 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./app
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.frontend
     ports:
       - "8080:80"
-    # depends_on:
-      # - backend
+    depends_on:
+      - backend
   backend:
     ports:
       - "8000:8000"
     build:
-      context: ./server
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.backend

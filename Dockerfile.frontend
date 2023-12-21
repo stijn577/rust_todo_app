@@ -3,8 +3,8 @@ FROM rust:latest as frontend-builder
 
 WORKDIR /usr/src/app
 
-COPY ../app /usr/src/app
-COPY ../share /usr/src/share
+COPY ./app /usr/src/app
+COPY ./share /usr/src/share
 
 RUN cargo install trunk --locked
 RUN rustup target add wasm32-unknown-unknown
