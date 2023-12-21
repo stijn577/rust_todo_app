@@ -1,0 +1,26 @@
+FROM rust:latest AS build-backend
+
+WORKDIR /usr/src/app
+
+
+COPY ./dist /usr/src/app/dist
+COPY ./src /usr/src/app/src
+COPY ./Cargo.toml /usr/src/app/Cargo.toml
+# COPY ./Trunk.toml /usr/src/app/Trunk.toml
+COPY ./app /usr/src/app/app
+COPY ./server /usr/src/app/server
+
+
+# RUN cargo install --path /usr/src/app
+# RUN cargo install trunk --locked
+
+# RUN trunk build
+RUN cargo b
+
+ENV ROCKET_ADDRESS=0.0.0.0
+
+EXPOSE 8000
+
+# COPY --from=build-backend /usr/src/app/target/release/server .
+
+CMD ["/usr/src/app/target/debug/server"]

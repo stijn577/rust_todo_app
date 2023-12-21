@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 serde = { version = "1.0.192", features = ["derive"] }
-yew_rocket = { path = ".." }
+shared_lib = { path = ".." }
 rocket = "0.5.0"
 serde_json = "1.0.108"
 rocket_cors = "0.6.0"

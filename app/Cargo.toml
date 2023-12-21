@@ -9,7 +9,7 @@ edition = "2021"
 serde = { version = "1.0.192", features = ["derive"] }
 serde_json = "1.0.108"
 yew = { version = "0.21.0", features = ["csr"] }
-yew_rocket = { path = ".." }
+shared_lib = { path = ".." }
 yew-router = "0.18.0"
 wasm-bindgen = "0.2.88"
 wasm-logger = "0.2.0"

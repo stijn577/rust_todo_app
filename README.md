@@ -1,6 +1,6 @@
-# Yew Rocket Rust full stack
+# Rust todo app
 
-### This project is a personal project to create a fully functioning website in Rust using a [Rocket.rs](https://rocket.rs/) backend, with a [Yew.rs](https://yew.rs/) wasm frontend.
+### This project is a personal project to create a fully functioning website in Rust using a [Rocket.rs](https://rocket.rs/) backend, with a [Yew.rs](https://yew.rs/) wasm frontend. I'm also planning to add a PostgresDB to the project and splitting the project into seperated docker containers.
 
 ## Hosting locally
 To host the website locally, you will have to perform the following actions:

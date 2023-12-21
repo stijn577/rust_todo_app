@@ -1,7 +1,7 @@
 use gloo::console;
 use js_sys::Date;
+use shared_lib::utils::structs::Task;
 use yew::{function_component, html, Component, Context, Html};
-use yew_rocket::utils::structs::Person;
 
 mod counter {
     use super::*;
@@ -77,91 +77,111 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-100">{"This string means there is multiple components and there is tailwindcss support."}</p>
+            <p class="bg-red-155">{"This string means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }
 mod http_req_test {
+    use shared_lib::utils::structs::{Test, Undefined};
+
     use super::*;
 
     pub(super) enum HttpMsg {
         Fetch(String),
-        Person(Person),
+        Tasks(Vec<serde_json::Value>),
+        // Task(Task<Undefined>),
     }
 
     pub(super) struct HttpReq {
         // name: String,           // this will store the name of the person
         // age: usize,             // this will store the age of the person
-        person: Option<Person>, // this will store the person result
+        // tasks: Option<Vec<serde_json::Value>>, // this will store the person result
+        // task: Option<Vec<serde_json::Value>>, // this will store the person result
+        tests: Vec<Task<Test>>,
+        undefined: Vec<Task<Undefined>>,
     }
 
     impl Component for HttpReq {
         type Message = HttpMsg;
         type Properties = ();
 
-        fn create(ctx: &Context<Self>) -> Self {
-            Self { person: None }
+        fn create(_ctx: &Context<Self>) -> Self {
+            Self {
+                tests: Vec::new(),
+                undefined: Vec::new(),
+            }
         }
 
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
             <div>
-                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("send request"); HttpMsg::Fetch("http://127.0.0.1:8000/hello/test/10".to_string())})}>{ "get stijn" }</button>
-                <p>{ if let Some(data) = &self.person {format!("{:?}", data) } else { "".to_string() }}</p>
+                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("sending request..."); HttpMsg::Fetch("http://127.0.0.1:8000/tasks".to_string())})}>{ "get tasks" }</button>
+                <p>{ if self.tests.is_empty() { String::from("") } else {format!("{:?}", self.tests)}}</p>
+                <p>{ if self.undefined.is_empty() { String::from("") } else { format!("{:?}", self.undefined) }}</p>
             </div>
             }
         }
 
         fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
-            let link = ctx
-                .link()
-                .clone();
+            let link = ctx.link().clone();
 
             match msg {
                 HttpMsg::Fetch(url) => {
                     wasm_bindgen_futures::spawn_local(async move {
-                        let person = get_person(url.as_str()).await;
-                        link.send_message(HttpMsg::Person(person))
+                        let tasks = get_tasks(url.as_str()).await;
+                        link.send_message(HttpMsg::Tasks(tasks))
                     });
 
                     false
                 }
-                HttpMsg::Person(person) => {
-                    self.person = Some(person.clone());
-                    console::log!("person has been set to: ", person);
+                HttpMsg::Tasks(task) => {
+                    // self.task = Some(task.clone());
+
+                    task.into_iter().for_each(|task| {
+                        if let Ok(task_test) = serde_json::from_value::<Task<Test>>(task.clone()) {
+                            if !self.tests.contains(&task_test) {
+                                self.tests.push(task_test)
+                            }
+                        }
+                        if let Ok(task_undefined) = serde_json::from_value::<Task<Undefined>>(task)
+                        {
+                            if !self.undefined.contains(&task_undefined) {
+                                self.undefined.push(task_undefined)
+                            }
+                        }
+                    });
+                    // console::log!("person has been set to: ", person);
                     true
-                }
+                } // HttpMsg::Task(task) => {
+                  //     self.task = Some(task.clone());
+                  //     true
+                  // }
             }
         }
     }
 
-    async fn get_person(url: &str) -> Person {
-        let resp = reqwest::get(url)
-            .await
-            .unwrap();
+    async fn get_tasks(url: &str) -> Vec<serde_json::Value> {
+        let resp = reqwest::get(url).await.unwrap();
 
         console::log!("response received");
 
-        let person = resp
-            .json::<Person>()
-            .await
-            .unwrap();
+        let tasks = resp.json::<Vec<serde_json::Value>>().await.unwrap();
 
         console::log!("json parsed");
-        person
+        tasks
     }
 }
 
 #[function_component]
 fn App() -> Html {
     html! {
-    
+
         <div  class="pl-5">
             <counter::Counter/>
             <rawhtml::RawHtml/>
             <http_req_test::HttpReq/>
         </div>
-    
+
     }
 }
 fn main() {
