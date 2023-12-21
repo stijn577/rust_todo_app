@@ -18,7 +18,7 @@ fn rocket() -> Rocket<Build> {
     rocket::build()
         // This binds the yew wasm frontend files, without this the index.html links to .js and .wasm files
         // would not be able to be established.
-        .mount("/", rocket::fs::FileServer::from(WASM_DIR))
+        // .mount("/", rocket::fs::FileServer::from(WASM_DIR))
         .mount("/", routes![hello_world, get_tasks])
 }
 

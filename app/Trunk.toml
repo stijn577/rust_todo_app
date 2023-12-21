@@ -1,6 +1,6 @@
 [build]
-target = "app/index.html"
-dist = "dist"
+target = "index.html"
+dist = "../dist"
 release = false
 open = true
 # [[proxy]]
@@ -11,16 +11,16 @@ watch = []
 ignore = []
 
 [clean]
-dist = "dist"
+dist = "../dist"
 cargo = false
 
-[[hooks]]
-stage = "pre_build"
-command = "nu"
-command_arguments = [
-    "-c",
-    "tailwindcss -i ./app/css/input.css -o ./app/css/output.css",
-]
+# [[hooks]]
+# stage = "pre_build"
+# command = "nu"
+# command_arguments = [
+#     "-c",
+#     "tailwindcss -i ./css/input.css -o ./css/output.css",
+# ]
 
 # [[hooks]]
 # stage = "post_build"
