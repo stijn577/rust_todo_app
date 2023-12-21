@@ -1,15 +1,33 @@
 version: '3'
 
+networks:
+  default:
+    ipam:
+      # config:
+        # - subnet: 192.168.92.0/24
+      driver: default
+      # name: rust_todo_cluster
+
 services:
   frontend:
+    cpus: 1
+    mem_limit: 1G
+
+    ports:
+      - "8080:80"
     build:
       context: .
       dockerfile: Dockerfile.frontend
-    ports:
-      - "8080:80"
     depends_on:
       - backend
+
   backend:
+    cpus: 1
+    mem_limit: 1G
+
+    networks:
+      default:
+        # ipv4_address: 192.168.92.21
     ports:
       - "8000:8000"
     build:

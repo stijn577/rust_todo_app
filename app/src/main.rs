@@ -115,7 +115,7 @@ mod http_req_test {
         fn view(&self, ctx: &Context<Self>) -> Html {
             html! {
             <div>
-                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("sending request..."); HttpMsg::Fetch("http://127.0.0.1:8000/tasks".to_string())})}>{ "get tasks" }</button>
+                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("sending request..."); HttpMsg::Fetch("http://localhost:8000/tasks".to_string())})}>{ "get tasks" }</button>
                 <p>{ if self.tests.is_empty() { String::from("") } else {format!("{:?}", self.tests)}}</p>
                 <p>{ if self.undefined.is_empty() { String::from("") } else { format!("{:?}", self.undefined) }}</p>
             </div>

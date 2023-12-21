@@ -3,7 +3,8 @@ static WASM_DIR: &str = "dist";
 #[cfg(test)]
 static WASM_DIR: &str = "../dist";
 
-use rocket::{response::content::RawJson, Build, Rocket};
+use rocket::{response::content::RawJson, Build, Rocket, http::Method};
+use rocket_cors::{AllowedOrigins, Cors, CorsOptions};
 use shared_lib::utils::structs::{TaskBuilder, Test, Undefined};
 
 #[macro_use]
@@ -15,7 +16,18 @@ mod tests;
 //TODO: add database support to the project
 #[launch]
 fn rocket() -> Rocket<Build> {
+    let cors = CorsOptions::default()
+        .allowed_origins(AllowedOrigins::all())
+        .allowed_methods(
+            vec![Method::Get, Method::Post, Method::Patch]
+                .into_iter()
+                .map(From::from)
+                .collect(),
+        )
+        .allow_credentials(true);
+
     rocket::build()
+        .attach(cors.to_cors().unwrap())
         // This binds the yew wasm frontend files, without this the index.html links to .js and .wasm files
         // would not be able to be established.
         // .mount("/", rocket::fs::FileServer::from(WASM_DIR))
