@@ -79,6 +79,30 @@ impl<T> Task<T> {
             kind,
         }
     }
+
+    pub fn title(&self) -> &str {
+        self.title.as_ref()
+    }
+
+    pub fn description(&self) -> &str {
+        self.description.as_ref()
+    }
+
+    pub fn image(&self) -> &str {
+        self.image.as_ref()
+    }
+
+    pub fn created(&self) -> &Date {
+        &self.created
+    }
+
+    pub fn due(&self) -> Option<&Date> {
+        self.due.as_ref()
+    }
+
+    pub fn kind(&self) -> &T {
+        self.kind.as_ref()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]

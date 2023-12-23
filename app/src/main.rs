@@ -1,6 +1,5 @@
 use gloo::console;
 use js_sys::Date;
-use shared_lib::utils::structs::Task;
 use yew::{function_component, html, Component, Context, Html};
 
 mod counter {
@@ -77,109 +76,165 @@ mod rawhtml {
     #[function_component(RawHtml)]
     pub(super) fn raw() -> Html {
         html! {
-            <p class="bg-red-155">{"This string means there is multiple components and there is tailwindcss support."}</p>
+            <p class="bg-red-100">{"If this string's background is red, it means there is multiple components and there is tailwindcss support."}</p>
         }
     }
 }
-mod http_req_test {
-    use shared_lib::utils::structs::{Test, Undefined};
+mod task_list {
+    use super::task_component::TaskComponent;
 
     use super::*;
 
-    pub(super) enum HttpMsg {
-        Fetch(String),
-        Tasks(Vec<serde_json::Value>),
+    pub(super) enum TaskListMessage {
+        HttpFetchTasks(String),
+        UpdateTaskComponents(Vec<serde_json::Value>),
         // Task(Task<Undefined>),
     }
 
-    pub(super) struct HttpReq {
-        // name: String,           // this will store the name of the person
-        // age: usize,             // this will store the age of the person
-        // tasks: Option<Vec<serde_json::Value>>, // this will store the person result
-        // task: Option<Vec<serde_json::Value>>, // this will store the person result
-        tests: Vec<Task<Test>>,
-        undefined: Vec<Task<Undefined>>,
+    pub(super) struct TaskList {
+        task_components: Vec<serde_json::Value>,
     }
 
-    impl Component for HttpReq {
-        type Message = HttpMsg;
+    impl Component for TaskList {
+        type Message = TaskListMessage;
         type Properties = ();
 
         fn create(_ctx: &Context<Self>) -> Self {
             Self {
-                tests: Vec::new(),
-                undefined: Vec::new(),
+                // tests: Vec::new(),
+                // undefined: Vec::new(),
+                task_components: Vec::new(),
             }
         }
 
         fn view(&self, ctx: &Context<Self>) -> Html {
-            html! {
-            <div>
-                <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("sending request..."); HttpMsg::Fetch("http://localhost:8000/tasks".to_string())})}>{ "get tasks" }</button>
-                <p>{ if self.tests.is_empty() { String::from("") } else {format!("{:?}", self.tests)}}</p>
-                <p>{ if self.undefined.is_empty() { String::from("") } else { format!("{:?}", self.undefined) }}</p>
-            </div>
+            if self
+                .task_components
+                .is_empty()
+            {
+                html! {
+                <div>
+                    <button class="btn btn-blue" onclick={ctx.link().callback(|_|{console::log!("sending request..."); TaskListMessage::HttpFetchTasks("http://localhost:8000/tasks".to_string())})}>{ "get tasks" }</button>
+                    // <p>{ if self.tests.is_empty() { String::from("") } else {format!("{:?}", self.tests)}}</p>
+                    // <p>{ if self.undefined.is_empty() { String::from("") } else { format!("{:?}", self.undefined) }}</p>
+                </div>
+                }
+            } else {
+                html! {
+                    <div>{ 
+                        self.task_components
+                        .clone()
+                        .into_iter()
+                        .map(|task_component| html! { <TaskComponent task={task_component}/> }).collect::<Html>() 
+                    }
+                    </div>
+
+                }
             }
         }
 
         fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
-            let link = ctx.link().clone();
+            let link = ctx
+                .link()
+                .clone();
 
             match msg {
-                HttpMsg::Fetch(url) => {
+                TaskListMessage::HttpFetchTasks(url) => {
                     wasm_bindgen_futures::spawn_local(async move {
                         let tasks = get_tasks(url.as_str()).await;
-                        link.send_message(HttpMsg::Tasks(tasks))
+                        link.send_message(TaskListMessage::UpdateTaskComponents(tasks))
                     });
 
                     false
                 }
-                HttpMsg::Tasks(task) => {
-                    // self.task = Some(task.clone());
+                TaskListMessage::UpdateTaskComponents(tasks) => {
+                    self.task_components = tasks;
 
-                    task.into_iter().for_each(|task| {
-                        if let Ok(task_test) = serde_json::from_value::<Task<Test>>(task.clone()) {
-                            if !self.tests.contains(&task_test) {
-                                self.tests.push(task_test)
-                            }
-                        }
-                        if let Ok(task_undefined) = serde_json::from_value::<Task<Undefined>>(task)
-                        {
-                            if !self.undefined.contains(&task_undefined) {
-                                self.undefined.push(task_undefined)
-                            }
-                        }
-                    });
-                    // console::log!("person has been set to: ", person);
                     true
-                } // HttpMsg::Task(task) => {
-                  //     self.task = Some(task.clone());
-                  //     true
-                  // }
+                }
             }
         }
     }
 
     async fn get_tasks(url: &str) -> Vec<serde_json::Value> {
-        let resp = reqwest::get(url).await.unwrap();
+        let resp = reqwest::get(url)
+            .await
+            .unwrap();
 
         console::log!("response received");
 
-        let tasks = resp.json::<Vec<serde_json::Value>>().await.unwrap();
+        let tasks = resp
+            .json::<Vec<serde_json::Value>>()
+            .await
+            .unwrap();
 
         console::log!("json parsed");
         tasks
     }
 }
 
+mod task_component {
+    use shared_lib::utils::structs::{Task, Test, Undefined};
+    use yew::Properties;
+
+    use super::*;
+
+    pub(super) enum TaskMsg {}
+
+    #[derive(Debug, Clone)]
+    pub(super) struct TaskComponent {
+        pub(crate) task: serde_json::Value,
+    }
+
+    #[derive(Properties, PartialEq)]
+    pub(super) struct TaskProps {
+        pub(super) task: serde_json::Value,
+    }
+
+    impl Component for TaskComponent {
+        type Message = TaskMsg;
+
+        type Properties = TaskProps;
+
+        fn create(ctx: &Context<Self>) -> Self {
+            Self {
+                task: ctx
+                    .props()
+                    .task
+                    .clone(),
+            }
+        }
+
+        fn view(&self, ctx: &Context<Self>) -> Html {
+            html! {
+                <div>
+                    <p> {
+                        if let Ok(task) = serde_json::from_value::<Task<Undefined>>(self.task.clone()){
+                            format!("{:#?}", task.title())
+                        } else if let Ok(task) = serde_json::from_value::<Task<Test>>(self.task.clone()){
+                            format!("{:#?}", task.title())
+                        } else {
+                            String::new()
+                        }
+                    }
+                    </p>
+                </div>
+            }
+        }
+
+        fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+            true
+        }
+    }
+}
+
 #[function_component]
 fn App() -> Html {
     html! {
-
-        <div  class="pl-5">
+        <div class="pl-5">
             <counter::Counter/>
             <rawhtml::RawHtml/>
-            <http_req_test::HttpReq/>
+            <task_list::TaskList/>
         </div>
 
     }

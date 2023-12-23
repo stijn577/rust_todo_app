@@ -1,5 +1,5 @@
-[alias]
-launch = "watch -c -- trunk build && cargo r"
+# [alias]
+# launch = "watch -c -- trunk build && cargo r"
 
 
 [term]

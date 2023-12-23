@@ -1,4 +1,8 @@
-target/
+app/target/
+server/target/
+share/target/
 dist/
+.cargo/Config.toml
 
 todo.md
+Rustfmt.toml
