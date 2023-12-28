@@ -64,3 +64,11 @@ When visiting [http://localhost:8000/tasks](http://localhost:8000/tasks) the ret
 ![Alt text](images/tasks.png)
 
 TODO: continue with the rest of the documentation
+
+```c
+int main(){
+    printf("Hello world\n");
+
+    exit(0);
+}
+```

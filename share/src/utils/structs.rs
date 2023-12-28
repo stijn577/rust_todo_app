@@ -1,4 +1,3 @@
-use js_sys::wasm_bindgen::JsValue;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize, Default, Clone, PartialEq)]
@@ -10,17 +9,6 @@ pub enum TaskTypes {
     Undefined,
     None,
 }
-pub trait TaskTrait {}
-
-// pub trait TaskTrait<T>: Serialize + Default + Clone {}
-
-// impl<T> TaskTrait<T> for Undefined {
-//     // Implement the methods
-// }
-
-// impl<T> TaskTrait<T> for Undefined {
-//     // Implement the methods
-// }
 
 #[derive(Debug, Deserialize, Serialize, Default, Clone, PartialEq)]
 pub struct Undefined;
@@ -30,26 +18,6 @@ pub struct Test {
     subject: String,
     chapters: Vec<String>,
 }
-
-// #[derive(Debug, Deserialize, Serialize, Clone)]
-// pub enum TaskKind {
-//     None,
-//     Test(Test),
-// }
-
-// impl Default for TaskKind {
-//     fn default() -> Self {
-//         Self::None
-//     }
-// }
-
-// impl std::ops::Deref for TaskKind {
-//     type Target = Test;
-
-//     fn deref(&self) -> &Self::Target {
-//         todo!()
-//     }
-// }
 
 #[derive(Debug, Serialize, Deserialize, Default, Clone, PartialEq)]
 pub struct Task<T> {
@@ -81,15 +49,18 @@ impl<T> Task<T> {
     }
 
     pub fn title(&self) -> &str {
-        self.title.as_ref()
+        self.title
+            .as_ref()
     }
 
     pub fn description(&self) -> &str {
-        self.description.as_ref()
+        self.description
+            .as_ref()
     }
 
     pub fn image(&self) -> &str {
-        self.image.as_ref()
+        self.image
+            .as_ref()
     }
 
     pub fn created(&self) -> &Date {
@@ -97,11 +68,13 @@ impl<T> Task<T> {
     }
 
     pub fn due(&self) -> Option<&Date> {
-        self.due.as_ref()
+        self.due
+            .as_ref()
     }
 
     pub fn kind(&self) -> &T {
-        self.kind.as_ref()
+        self.kind
+            .as_ref()
     }
 }
 
@@ -165,24 +138,15 @@ where
 
 impl TaskBuilder<Test> {
     pub fn add_subject(&mut self, subject: impl Into<String>) -> &mut Self {
-        self.kind.subject = subject.into();
+        self.kind
+            .subject = subject.into();
         self
     }
 
     pub fn add_chapter(&mut self, chapter: impl Into<String>) -> &mut Self {
-        self.kind.chapters.push(chapter.into());
+        self.kind
+            .chapters
+            .push(chapter.into());
         self
     }
 }
-
-// impl From<Task> for js_sys::wasm_bindgen::JsValue {
-//     fn from(value: Task) -> Self {
-//         JsValue::from_str(format!("{:?}", value).as_str())
-//     }
-// }
-
-// impl From<Vec<Task>> for js_sys::wasm_bindgen::JsValue {
-// fn from(value: Task) -> Self {
-// JsValue::from_str(format!("{:?}", value).as_str())
-// }
-// }

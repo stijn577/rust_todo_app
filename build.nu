@@ -18,7 +18,7 @@ def "run app" [] {
     build app
     cd app
     trunk serve
-    }
+}
 
     def "run server" [] {
         build server
