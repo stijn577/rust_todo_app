@@ -62,13 +62,3 @@ If all goes well the webapp should be running and look something like this:
 When visiting [http://localhost:8000/tasks](http://localhost:8000/tasks) the return values should look like this:
 
 ![Alt text](images/tasks.png)
-
-TODO: continue with the rest of the documentation
-
-```c
-int main(){
-    printf("Hello world\n");
-
-    exit(0);
-}
-```
